@@ -1,0 +1,23 @@
+<h3> View who you follow :</h3>
+
+<%= link_to "Logout", :controller => 'access', :action => 'logout' %>
+<%= link_to "Users to follow", :controller => 'followers', :action => 'view_users_to_follow' %>
+<%= link_to "Followers", :controller => 'followers', :action => 'show_followers' %>
+<table>
+<% @following.each do |following|%>
+<tr>
+	<td>
+		<% if following != nil %>
+		<%= User.find(following.user_id).username %>
+		<%else%>
+		<%= "False "%>
+		<%end%>
+	</td>
+	<td>
+		<%= button_to "Unfollow", :action => 'check_follow_user', :followee_id => following.user_id %>
+	</td>
+	
+</tr>
+<%end%>
+</table>
+

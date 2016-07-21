@@ -1,0 +1,35 @@
+<h5>Logged in as: <%= session[:username] %></h5>
+
+<%= image_tag @diary.diary_image_url(:mid).to_s%>
+<h3>Viewing Diary: <%= @diary.name %></h3>
+
+<%= link_to "Write new post", {:action => 'new', :diary_id => params[:diary_id]}%>
+<%= link_to "Dashboard", :controller => 'access', :action => 'index'%>
+<%= link_to "Logout", :controller => 'access', :action => 'logout'%>
+<table summary = "posts-show">
+<tr>
+	<th>Title</th>
+	<th>Diary ID</th>
+	<th>User ID</th>
+</tr>
+<% @posts.each do |post|%>
+
+<tr>
+	<td>
+		<%= post.title %>
+	</td>
+	<td>
+		<%= post.diary_id %>
+	</td>
+	<td>
+		<%= post.user_id%>
+	</td>
+	<td>
+		<%= link_to "Delete Post", :action => 'delete', :post_id => post.id, :diary_id => post.diary_id %>
+		<%= link_to "Edit Post", :action => 'edit', :post_id => post.id, :diary_id => post.diary_id  %>
+		<%= link_to "View Full", :action => 'show', :post_id => post.id, :diary_id => post.diary_id  %>
+	</td>
+</tr>
+<% end %>
+</table>
+

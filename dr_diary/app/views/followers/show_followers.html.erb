@@ -1,0 +1,20 @@
+<h3> View your followers :</h3>
+
+<%= link_to "Logout", :controller => 'access', :action => 'logout' %>
+<%= link_to "Users to follow", :controller => 'followers', :action => 'view_users_to_follow' %>
+<%= link_to "See who you follow", :controller => 'followers', :action => 'show_following' %>
+<table>
+<% @followers.each do |follower|%>
+<tr>
+	<td>
+		<% if follower != nil %>
+		<%= User.find(follower.follower_id).username %>
+		<%else%>
+		<%= "False "%>
+		<%end%>
+	</td>
+	
+</tr>
+<%end%>
+</table>
+

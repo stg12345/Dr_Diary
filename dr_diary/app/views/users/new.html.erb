@@ -1,0 +1,54 @@
+<%= flash[:notice] %>
+<% if @user.errors.full_messages.any?%>
+<% @user.errors.full_messages.each do |error_message|%>
+<%= error_message %>
+<br />
+<%end%>
+<%end%>
+<div class = "create user">
+	<%= form_for(:user, :url => {:action => 'create'},:html => {:multipart => true}) do |f| %>
+	<table summary="user form-fields">
+		<tr>
+			<%= f.label(:first_name) %>
+			<%= f.text_field (:first_name) %>
+		</tr>
+		<br/>
+		<tr>
+			<%= f.label(:last_name) %>
+			<%= f.text_field (:last_name) %>	
+		</tr>
+		<br/>
+		<tr>
+			<%= f.label(:email,"Email-ID :")%>
+			<%= f.text_field(:email)%>
+		</tr>
+		<br/>
+		<tr>
+			<%= f.label(:email,"Confirm Email-ID :")%>
+			<%= f.text_field(:email_confirmation)%>
+		</tr>
+		<br/>
+		<tr>
+			<%= f.label (:username)%>
+			<%= f.text_field (:username)%>
+		</tr>
+		<br/>
+		<tr>
+			<%= f.label (:password)%>
+			<%= f.password_field (:password)%>
+		</tr>
+		<br/>
+		<tr>
+			<%= f.label (:password_confirmation)%>
+			<%= f.password_field (:password_confirmation	)%>
+		</tr>
+		<br/>
+		<tr>
+			<%= f.label :user_profile_picture, "Upload a profile picture." %>
+			<%= f.file_field :user_profile_picture %>
+		</tr>
+		<br/>
+		</table>
+		<%= submit_tag("Create new") %>
+		<% end %>
+</div>

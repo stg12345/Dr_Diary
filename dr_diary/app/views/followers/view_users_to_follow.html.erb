@@ -1,0 +1,22 @@
+<h3>Find users to follow</h3> 
+<%= link_to "Logout", :controller => 'access', :action => 'logout' %>
+<%= link_to "Followers", :controller => 'followers', :action => 'show_followers' %>
+<%= link_to "See who you follow", :controller => 'followers', :action => 'show_following' %>
+<%= flash[:notice ]%>
+<br />
+
+
+<% @users_to_follow.each do |utfollow| %>
+		<table summary = "Users-follow">
+		<tr>
+			<td>
+				<%= User.find(utfollow).first_name %> &nbsp; <%= User.find(utfollow).last_name %> &nbsp; <%= User.find(utfollow).username %>
+			</td>
+			<td>
+				<%= button_to "Follow", :action => 'check_follow_user', :followee_id => utfollow %>
+			</td>
+			
+		</tr>
+		</table>
+<%end%>
+

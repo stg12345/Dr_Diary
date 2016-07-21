@@ -1,0 +1,37 @@
+<h2>Update Diary Info</h2>
+
+<%if @diary.errors.full_messages.any?%>
+<% @diary.errors.full_messages.each do |error_message| %>
+<%= error_message %>
+<%end%>
+<%end%>
+
+<%= form_for :diary,:url=>{:action => 'update',:diary_id => params[:id]} do |f| %>
+<table summary ="Diary-edit">
+<tr>
+	<td>
+		<%= f.label(:name) %>
+		<%= f.text_field(:name) %>
+	</td>
+</tr>
+<tr>
+	<td>
+		<%= f.label(:visibility) %>
+		<%= f.check_box(:visibility) %>
+	</td>
+</tr>
+<tr>
+	<td>
+			<%= f.label :diary_image,"Diary cover photo"%>
+			<%= f.file_field :diary_image %>
+	</td>
+</tr
+<tr>
+	<td>
+		<%= submit_tag "Update Diary info"%>
+	</td>
+</tr>
+
+	</table>
+<%end%>
+

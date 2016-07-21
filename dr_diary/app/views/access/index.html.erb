@@ -1,0 +1,26 @@
+<h3>Index</h3>
+<h2>Welcome <%= session[:username]%> !!!</h2>
+<br />
+
+
+<%= flash[:notice] %>
+<br />
+<%= link_to "Logout", :action => 'logout' %>
+<%= link_to "Create Diary",:controller => 'diaries', :action => 'new' %>
+<%= link_to "My Diaries", :controller => 'diaries', :action => 'show_mine'%>
+<%= link_to "Edit User Details", :controller => 'users', :action => 'edit' %>
+<%= link_to "Followers", :controller => 'followers', :action => 'show_followers' %>
+<%= link_to "Follow someone", :controller => 'followers', :action => 'view_users_to_follow' %>
+<table summary = "Diaries">
+	<tr>
+		<th class = "header">Your Diaries</th>
+	</tr>
+	<tr>
+		<th>Name</th>
+	
+		<th>Visibility</th>
+	
+		<th>Actions</th>
+	</tr>
+	
+</table>

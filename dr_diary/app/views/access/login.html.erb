@@ -1,0 +1,23 @@
+
+<div><%= link_to "Register New User",:controller => 'users', :action => 'new'%></div>
+<%= flash[:notice] %>
+
+<div class = "user login">
+	<%= form_tag(:action => 'attempt_login') do %>
+	<table summary = "form-login">
+		<tr>
+		<th><%= label_tag(:username) %></th>
+		<td><%= text_field_tag(:username) %>
+		</tr>	
+			
+		<tr>
+		<th><%= label_tag(:password) %></th>
+		<td><%= password_field_tag(:password) %>
+		</tr>	
+	</table>
+
+    	<div class = 'form-buttons'>
+				<%= submit_tag("Login")%> 
+			</div>
+	<% end %>
+</div>

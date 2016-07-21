@@ -1,0 +1,43 @@
+<h3>Edit post</h3>
+
+<%if @post.errors.full_messages.any?%>
+<% @post.errors.full_messages.each do |error_message| %>
+<%= error_message %>
+<%end%>
+<%end%>
+	
+<%= form_for :post, :url=>{:action => 'update',:diary_id => params[:diary_id],:post_id => params[:post_id],:html => {:multipart => true}} do |f|%>
+<table summary = "post-edit">
+	
+	<tr>
+		<td>
+			<%= f.label(:title)%>
+			<%= f.text_field(:title)%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.label(:visibility)%>
+			<%= f.check_box(:visibility)%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<%= f.label(:content)%>
+		<%= f.text_area(:content)%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :post_pictures, "Upload all pictures to this post"%>
+			<%= f.file_field :post_pictures, multiple: true %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<%= submit_tag "Update Post"%>
+		</td>
+	</tr>
+	
+</table>
+	<% end %>

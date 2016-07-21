@@ -1,0 +1,41 @@
+<%if @post.errors.full_messages.any?%>
+<% @post.errors.full_messages.each do |error_message| %>
+<%= error_message %>
+<%end%>
+<%end%>
+
+<%= link_to "Logout", :controller => 'access', :action => 'logout'%>
+<%= form_for(:post, :url => {:action => "create", :diary_id => params[:diary_id]}, :html => {:multipart => true}) do |f| %>
+<table summary = "Post-create">
+	<tr>
+		<td>
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :visibility %>
+			<%= f.check_box :visibility %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :content %>
+			<%= f.text_area :content %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :post_pictures, "Upload all pictures to this post"%>
+			<%= f.file_field :post_pictures, multiple: true %>
+		</td>
+	</tr>
+	<tr>
+	<td>
+		<%= submit_tag "Submit Post"%>
+	</td>
+	</tr>
+	
+</table>
+<%end%>

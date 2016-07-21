@@ -1,0 +1,2 @@
+module UdiariesHelper
+end

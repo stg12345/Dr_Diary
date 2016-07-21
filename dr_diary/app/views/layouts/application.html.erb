@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DrDiary</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+<% if session[:user_id] != nil%>
+<h5>Logged in as:</h5><%= User.find(session[:user_id]).username%> <%= image_tag User.find(session[:user_id]).user_profile_picture_url(:thumb).to_s %>  
+<%end%>
+</body>
+</html>

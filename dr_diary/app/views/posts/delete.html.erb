@@ -1,0 +1,11 @@
+
+
+<%= form_for(:post, :url => {:action => 'destroy',:post_id => @post.id, :diary_id => params[:diary_id] }) do |f| %>
+<th>
+	Do you wish to destroy the following post:
+	<br />
+	<%= @post.title %>
+</th>
+	
+	<%= submit_tag "Delete Post"%>
+	<%end%>

@@ -1,0 +1,41 @@
+
+
+<%= link_to "Create Diary",:controller => 'diaries', :action => 'new' %>
+<%= link_to "Dashboard", :controller => 'access', :action => 'index'%>	
+<%= link_to "logout", :controller => 'access', :action => 'logout'%>
+<table summary = "Diary Display">
+	<tr>
+		<th>
+			DP
+		</th>
+		<th>
+			Name
+		</th>
+		<th>
+		Visibility
+		</th>
+		<th>
+			Actions
+		</th>
+	</tr>
+	<% @diaries.each do |diary|%>
+	<tr>
+		<td>
+			<% if diary.diary_image_url != nil%>
+			<%= image_tag diary.diary_image_url(:thumb).to_s%>
+			<%end%>
+		</td>
+		<td>
+			<%= diary.name %>
+		</td>
+		<td>
+			<%= diary.visibility %>
+		</td>
+		<td>
+			<%= link_to "Edit", {:action => 'edit', :id => diary.id} %>
+			<%= link_to "Delete", {:action => 'delete', :id => diary.id} %>
+			<%= link_to "Open Diary", {:controller => 'posts', :action => 'index', :diary_id => diary.id}%>
+		</td>
+	</tr>
+	<%end%>
+</table>

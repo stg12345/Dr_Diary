@@ -1,0 +1,7 @@
+
+<%= form_tag(:url => {:action => 'destroy'}, :id => @diary.id )%>
+<h2> Do you wish to destroy the Diary?</h2>
+
+<%= submit_tag("Destroy Diary Named: #{@diary.name}") %>
+
+

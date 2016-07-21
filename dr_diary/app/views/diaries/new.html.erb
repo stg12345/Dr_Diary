@@ -1,0 +1,32 @@
+<h4>Create New Diary</h4>
+
+<%if @diary.errors.full_messages.any?%>
+<% @diary.errors.full_messages.each do |error_message| %>
+<%= error_message %>
+<%end%>
+<%end%>
+<%= form_for :diary, :url=>{:action=> 'create'}, :html => {:multipart => true} do |f|%>
+<table summary = diary-create>
+	<tr>
+	<td>
+		<%= f.label :name %>
+		<%= f.text_field :name%>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		<%= f.label :visibility%>
+		<%= f.check_box :visibility%>
+	</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :diary_image,"Diary cover photo"%>
+			<%= f.file_field :diary_image %>
+		</td>
+	</tr>
+	
+</table>
+
+<%= submit_tag "Create new Diary"%>
+<% end %>
